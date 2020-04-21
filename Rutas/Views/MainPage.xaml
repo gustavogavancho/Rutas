@@ -1,0 +1,268 @@
+<Page x:Class="Rutas.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Behaviors="using:Template10.Behaviors"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:Template10.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Rutas.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:Rutas.ViewModels" mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveStates">
+                <VisualState x:Name="DefaultState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="890"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowHeight="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader x:Name="PageHeader"
+                             Grid.Row="0"
+                             Text="Pagina Principal"
+                             Frame="{x:Bind Frame}"/>
+
+        <TextBlock Grid.Row="1" 
+                   Text="Paginas"
+                   Margin="12,8,8,8"
+                   Style="{ThemeResource TitleTextBlockStyle}"/>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <RelativePanel Grid.Row="2">
+
+                <Button Name="RutasPageButton" 
+                    Content="&#xE194;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    Click="RutasPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Rutas" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Rutas"
+                       Name="Text2"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="RutasPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="RutasPageButton"/>
+
+
+                <Button Name="LoalidadesPageButton" 
+                    Content="&#xE125;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="RutasPageButton"
+                    Click="LoalidadesPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Localidades" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Localidades"
+                       Name="Text1"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="LoalidadesPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="LoalidadesPageButton"/>
+
+
+                <Button Name="TecnicosPageButton" 
+                    Content="&#xE1E2;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="LoalidadesPageButton"
+                    Click="TecnicosPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Tecnicos" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Tecnicos"
+                       Name="Text3"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="TecnicosPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="TecnicosPageButton"/>
+
+                <Button Name="InventarioPageButton" 
+                    Content="&#xE8BA;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="TecnicosPageButton"
+                    Click="InventarioPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Inventario" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Inventario"
+                       Name="Text4"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="InventarioPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="InventarioPageButton"/>
+
+
+                <Button Name="AlmacenPageButton" 
+                    Content="&#xE80A;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="InventarioPageButton"
+                    Click="AlmacenPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Almacen" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Almacen"
+                       Name="Text5"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="AlmacenPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="AlmacenPageButton"/>
+
+
+                <Button Name="LocacionPageButton" 
+                    Content="&#xE809;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="AlmacenPageButton"
+                    Click="LocacionPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Locacion" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Locacion"
+                       Name="Text6"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="LocacionPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="LocacionPageButton"/>
+
+
+                <Button Name="PartNumberPageButton" 
+                    Content="&#xE7F0;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="LocacionPageButton"
+                    Click="PartNumberPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Part Number" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Part Number"
+                       Name="Text7"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="PartNumberPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="PartNumberPageButton"/>
+                
+                <Button Name="IndicadoresPageButton" 
+                    Content="&#xE8DE;" 
+                    FontSize="50"
+                    Height="100"
+                    Width="100"
+                    Style="{StaticResource EstiloButton}"
+                    Margin="10"
+                    RelativePanel.RightOf="PartNumberPageButton"
+                    Click="IndicadoresPageButton_Click">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Placement="Mouse" 
+                         Background="#003366">
+                            <TextBlock Text="Part Number" 
+                                   Foreground="White"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </Button>
+
+                <TextBlock Text="Indicadores"
+                       Name="Text8"
+                       FontSize="13"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.Below="IndicadoresPageButton"
+                       RelativePanel.AlignHorizontalCenterWith="IndicadoresPageButton"/>
+
+
+
+            </RelativePanel>
+
+        </ScrollViewer>
+
+
+    </Grid>
+
+</Page>

@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="Rutas.Reports.TecnicosReport"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="using:Rutas.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Reporte Tecnicos" Style="{StaticResource TitleTextBlockStyle}" Margin="8"/>
+        <Rectangle Fill="#003366" Height="2" Grid.Row="1" Width="15000" Margin="4"/>
+
+        <GridView Name="TecnicosGridView" 
+                  Grid.Column="2"
+                  IsItemClickEnabled="False"
+                  Grid.Row="2"
+                  Margin="6" 
+                  ItemsSource="{x:Bind Tecnicos}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:Tecnicos">
+
+                    <Grid Margin="8,0,0,0"
+                          Width="200">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Background="#003366"
+                                  Height="70"
+                                  Width="70">
+                            <TextBlock Text="{x:Bind Apocope}" 
+                                           FontSize="36" 
+                                           FontWeight="Light" 
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"/>
+                        </Grid>
+
+                        <TextBlock Grid.Column="1" 
+                                       Margin="8,0,0,0">
+                                <Run Text="Nombre:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind Nombre}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                                <LineBreak/>
+                                <Run Text="Apellido:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind Apellido}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                        </TextBlock>
+
+                        <TextBlock Grid.Row="1" 
+                                       Grid.ColumnSpan="2">
+                                <Run Text="DNI:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind Dni}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                                <LineBreak/>
+                                <Run Text="Direccion:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind Direccion}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                                <LineBreak/>
+                                <Run Text="Fecha Nacimiento:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind FechaNacimiento}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                                <LineBreak/>
+                                <Run Text="Email:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind Email}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                                <LineBreak/>
+                                <Run Text="Telefono:" 
+                                     FontSize="14" 
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="{x:Bind Telefono}" 
+                                     FontSize="14" 
+                                     FontWeight="Light"/>
+                        </TextBlock>
+
+                    </Grid>
+
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+
+    </Grid>
+</Page>

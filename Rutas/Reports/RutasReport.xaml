@@ -1,0 +1,99 @@
+﻿<Page
+    x:Class="Rutas.Reports.RutasReport"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="using:Rutas.Models"
+    xmlns:local="using:Rutas.Reports"
+    xmlns:converters="using:Template10.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:StringFormatConverter x:Key="StringFormatConverter" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Reporte Rutas" Style="{StaticResource TitleTextBlockStyle}" Margin="8"/>
+        <Rectangle Fill="#003366" Height="2" Grid.Row="1" Width="15000" Margin="4"/>
+
+        <GridView Name="RutasGridView" 
+                  Grid.Row="2"
+                  IsItemClickEnabled="False"
+                  ItemsSource="{x:Bind Rutas}"
+                  Margin="6,0,0,0">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:Rutas">
+                    <Grid Width="190">
+                        <RelativePanel Margin="0,6,0,6" >
+                            <Grid Background="{x:Bind Color}"
+                                     Name="1"
+                                     Height="70"
+                                     Width="70"
+                                     HorizontalAlignment="Left">
+                                <TextBlock Text="{x:Bind Tecnicos.Apocope}" 
+                                           FontSize="36" 
+                                           FontWeight="Light" 
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="Black"/>
+                            </Grid>
+                            <TextBlock RelativePanel.RightOf="1"
+                                   Margin="8,-3,0,0">
+                        <Run Text="Almacén:" 
+                             FontSize="14" 
+                             FontWeight="Bold"/>
+                        <LineBreak/>
+                        <Run Text="{x:Bind Tecnicos.Nombre}" 
+                             FontSize="14" 
+                             FontWeight="Light"/>
+                        <LineBreak/>
+                        <Run Text="Locación:" 
+                             FontSize="14" 
+                             FontWeight="Bold"/>
+                        <LineBreak/>
+                        <Run Text="{x:Bind Tecnicos.Apellido}" 
+                             FontSize="14" 
+                             FontWeight="Light"/>
+                            </TextBlock>
+
+                            <TextBlock RelativePanel.Below="1"
+                               Margin="0,0,0,0">
+                        <Run Text="Part Number:" 
+                             FontSize="14" 
+                             FontWeight="Bold"/>
+                        <LineBreak/>
+                        <Run Text="{x:Bind FechaInicio}" 
+                             FontSize="14" 
+                             FontWeight="Light"/>
+                        <LineBreak/>
+                        <Run Text="Descripción:" 
+                             FontSize="14" 
+                             FontWeight="Bold"/>
+                        <LineBreak/>
+                        <Run Text="{x:Bind FechaFin}" 
+                             FontSize="14" 
+                             FontWeight="Light"/>
+                        <LineBreak/>
+                        <Run Text="Estado:" 
+                             FontSize="14" 
+                             FontWeight="Bold"/>
+                        <LineBreak/>
+                        <Run Text="{x:Bind Estado}" 
+                             FontSize="14" 
+                             FontWeight="Light"/>
+                            </TextBlock>
+                        </RelativePanel>
+                    </Grid>
+                </DataTemplate>
+
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>
