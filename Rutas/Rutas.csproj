@@ -298,7 +298,7 @@
       <Version>1.0.0-preview2-final</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.2.2</Version>
+      <Version>5.2.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>1.2.0</Version>
