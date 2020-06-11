@@ -9,6 +9,8 @@ using Rutas.Services.SettingsServices;
 using Rutas.Views;
 using Template10.Common;
 using Template10.Controls;
+using System.Net;
+using System;
 
 namespace Rutas
 {
@@ -64,6 +66,90 @@ namespace Rutas
                     db.Proyectos.Add(new Proyectos { Descripcion = "Otros" });
 
                     db.SaveChanges();
+                }
+
+                if (!db.Tecnicos.Any())
+                {
+                    var tecnicos = new Tecnicos
+                    {
+                        Id = 1,
+                        Nombre = "Gustavo",
+                        Apellido = "Gavancho León",
+                        Apocope = "G",
+                        Dni = "73215945",
+                        Direccion = "Psje. Limatambo 121",
+                        Email = "gustavo.gavancho.l@gmail.com",
+                        Telefono = 993704915,
+                        FechaNacimiento = DateTime.Now,
+                    };
+                    db.Add(tecnicos);
+                    db.SaveChangesAsync();
+                }
+                if (!db.Almacenes.Any())
+                {
+                    var almacen = new Almacenes
+                    {
+                        Id = 1,
+                        Descripcion = "General",
+                        Apocope = "G",
+                    };
+                    db.Add(almacen);
+                    db.SaveChangesAsync();
+                }
+                if (!db.Locaciones.Any())
+                {
+                    var locacion1 = new Locaciones
+                    {
+                        Id = 1,
+                        Descripcion = "Malogrados",
+                        Apocope = "M",
+                    };
+                    var locacion2 = new Locaciones
+                    {
+                        Id = 2,
+                        Descripcion = "Robados",
+                        Apocope = "M",
+                    };
+                    var locacion3 = new Locaciones
+                    {
+                        Id = 3,
+                        Descripcion = "Normal",
+                        Apocope = "N",
+                    };
+                    db.AddRange(locacion1, locacion2, locacion3);
+                    db.SaveChangesAsync();
+                }
+                if (!db.PartNumbers.Any())
+                {
+                    var partnumber = new PartNumbers
+                    {
+                        Id = 1,
+                        Categoria = Categoria.Equipos,
+                        PartNumber = "541210-v",
+                        Descripcion = "VSAT DUAL BAND",
+                    };
+                    db.Add(partnumber);
+                    db.SaveChangesAsync();
+                }
+                if (!db.Localidades.Any())
+                {
+                    var localidad = new Localidades
+                    {
+                        Id = 1,
+                        Localidad = "Nueva Union",
+                        Distrito = "La Banda de Shilcayo",
+                        Provincia = "San Martin",
+                        Departamento = "San Martin",
+                        Vsatid = 541310,
+                        Telefonos = "9784984516",
+                        Serviciosid = 1,
+                        Proyectoid = 1,
+                        Latitud = 45.87984984948,
+                        Longitud = 45.98498984949,
+                        Costo = 1100.77,
+                    };
+                    db.Add(localidad);
+                    db.SaveChangesAsync();
                 }
             }
             #endregion
